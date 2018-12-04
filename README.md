@@ -1,3 +1,3 @@
 # aikq-notebook
 
-[note-1](https://github.com/aikaiqiang/aikq-notebook/issues/1)
+[IDEA 常用快捷键](https://github.com/aikaiqiang/aikq-notebook/issues/1)
