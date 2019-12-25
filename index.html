@@ -7,6 +7,11 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <style>
+    nav.app-nav li ul {
+      min-width: 100px;
+    }
+  </style>
 </head>
 <body>
   <!-- <nav>
@@ -16,32 +21,42 @@
   <div id="app">正在加载，请稍候...</div>
   <script>
     window.$docsify = {
-      name: 'aikq-notebook',
+      name: 'Kaywall学习笔记',
       repo: 'https://github.com/aikaiqiang/',
       // 搜索工具
       search: {
         maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-        paths: ['doc/webmagic快速体验'], // or 'auto'
-        placeholder: '🔍搜索',
+        paths: 'auto', // or 'auto'
+        // placeholder: '🔍搜索',
+        placeholder: {
+          '/': '🔍Search'
+        },
         noData: 'No Results!',
         // 搜索标题的最大程级, 1 - 6
         depth: 6
       },
+      formatUpdated: '{MM}/{DD} {HH}:{mm}',
       // logo: '/_media/icon.svg',
       // 封面
       // coverpage: true,
-      // 设置生成目录的最大层级开启这个功能, 自定义侧边栏后默认不会再生成目录
-      subMaxLevel: 2,
       // 切换页面后是否自动跳转到页面顶部
       auto2top: true,
+      basePath: '/',
+      mergeNavbar: true,
+      maxLevel: 4,
+      subMaxLevel: 2,
+      // 侧边导航
+      // loadSidebar: true,
+
       // 上方导航，加载 _navbar.md
       loadNavbar: true,
       // 加载 nav.md
       // loadNavbar: 'nav.md',
-      // 侧边导航
-      // loadSidebar: true,
+
+      
       // 加载 summary.md
       // loadSidebar: 'summary.md',
+
       // Markdown 配置
       markdown: {
         renderer: {
@@ -55,38 +70,58 @@
           }
         }
       },
+
       // 评论系统
-      disqus: 'aikaiqiang',
-      // 底部声明
-      plugins: [
-        function (hook) {
-          var footer = [
-            '<hr/>',
-            '<footer>',
-            '<span><a href="https://github.com/aikaiqiang">kaywall</a> &copy;2019.</span>',
-            '</footer>'
-          ].join('')
-          hook.afterEach(function (html) {
-            return html + footer
-          })
-        }
-      ],
+      // disqus: 'aikaiqiang',
+    
       // 资源的文件扩展名
       ext: '.md',
       // 在找不到指定页面时加载_404.md:
-      notFoundPage: true
+      notFoundPage: true,
+
+      // 谷歌统计 - Google Analytics
+      // ga: 'UA-XXXXX-Y'
+
+      // 自定义插件 - 底部声明
+      plugins: [
+        function (hook) {
+        var footer = [
+          '<hr/>',
+          '<footer>',
+          '<span><a href="https://github.com/aikaiqiang">kaywall</a> &copy;2019.</span>',
+          '<span>Proudly published with <a href="https://github.com/aikaiqiang/aikq-notebook" target="_blank">notebook</a>.</span>',
+          '</footer>'
+        ].join('')
+
+        hook.afterEach(function (html) {
+        return html + footer
+      })
+    }
+  ]
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/disqus.min.js"></script>
+  <!-- <script src="//unpkg.com/docsify/lib/plugins/disqus.min.js"></script> -->
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
+
   <!-- java代码高亮 -->
-  <script src="//unpkg.com/prismjs/components/prism-java.js"></script>
-  <script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
-  <!-- 放到图片 -->
+  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-go.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-javascript.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-sql.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-markdown.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-nginx.min.js"></script>
+  <!-- 复制到剪贴板 -->
+  <script src="//unpkg.com/docsify-copy-code"></script>
+
+  <!-- 缩放图片 -->
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+  <!-- 全文搜索 -->
   <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+  <!-- google 统计 -->
+  <!-- <script src="//unpkg.com/docsify/lib/plugins/ga.js"></script> -->
 </body>
 </html>
